@@ -1,0 +1,64 @@
+
+<div class="container">
+  <h1>Template Driven Form</h1>
+</div>
+
+<form #f="ngForm"  (ngSubmit)="submit(f)">
+  <div class="container">
+  <div class="form-group">
+    <label for="firstName">Firstname</label>
+    <input 
+    required 
+    minlength="3" 
+    maxlength="10"  
+    id="firstName" 
+    ngModel 
+    name="firstName" 
+    type="text" 
+    class="form-control" 
+    #firstName="ngModel" 
+    (change)="log(firstName)">
+  </div>
+
+  <div 
+  class="alert alert-danger"  
+  *ngIf="!firstName.valid && firstName.touched">
+  <div *ngIf="firstName.errors.required">Firstname required</div>
+  
+  <div *ngIf="firstName.errors.minlength ">Minimum {{firstName.errors.minlength.requiredLength }} character required</div>
+  </div>
+
+  <div class="form-group">
+      <label for="comment">Comment</label>
+      <textarea  id="comment"  cols="30" rows="10" class="form-control" ></textarea>
+    </div>
+
+    <div class="form-group">
+        <label for="password">Password</label>
+        <input 
+        type="password" 
+        class="form-control" 
+        ngModel name="password" 
+        required 
+        minlength="8"  
+        #password="ngModel">
+      </div>
+
+      <div 
+      class="alert alert-danger"  
+      *ngIf="!password.valid && password.touched">
+      <div *ngIf="password.errors.required">Password is required</div>
+      
+      <div *ngIf="password.errors.minlength ">Minimum {{password.errors.minlength.requiredLength }} character required</div>
+      </div>
+    
+      
+<button 
+class="btn btn-primary" 
+[disabled]="!f.valid">
+Submit</button>
+
+  </div>
+  
+
+</form>

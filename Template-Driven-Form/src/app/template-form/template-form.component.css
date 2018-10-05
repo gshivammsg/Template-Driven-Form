@@ -1,0 +1,12 @@
+.form-control.ng-pristine.ng-touched.ng-invalid{
+    border: 2px solid red;
+}
+
+.form-control.ng-dirty.ng-touched.ng-invalid{
+    border: 2px solid red;
+}
+
+h1{
+    color: royalblue;
+    text-align: center;
+}
